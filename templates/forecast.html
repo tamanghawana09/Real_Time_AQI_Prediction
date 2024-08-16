@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>24-hour AQI Forecast</h1>
+        
+        <p class="current-time">Current Date and Time: {{ current_time }}</p>
+        
+        {% if forecasted_aqi %}
+            <h2>Forecasted Data</h2>
+            <table class="forecast-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Forecasted AQI</th>
+                        <th>Lower Bound</th>
+                        <th>Upper Bound</th>
+                        <th>Category</th>
+                        <th>Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in forecasted_aqi %}
+                        <tr>
+                            <td>{{ record.ds }}</td>
+                            <td>{{ record.yhat }}</td>
+                            <td>{{ record.yhat_lower }}</td>
+                            <td>{{ record.yhat_upper }}</td>
+                            <td>{{ record.category }}</td>
+                            <td>{{ record.recommendation }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <h2>Forecast Plot</h2>
+            <img src="{{ plot_url }}" alt="Forecast Plot" class="forecast-img">
+            
+            <h2>AQI Categories Distribution</h2>
+            <img src="{{ category_plot_url }}" alt="AQI Categories Distribution" class="forecast-img">
+        {% else %}
+            <p>No forecast data available. Please submit the form to get the forecast.</p>
+        {% endif %}
+        
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

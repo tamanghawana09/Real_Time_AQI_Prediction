@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Forecast</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AQI Logo" class="logo">
+        </div>
+        <div class="clock-container">
+            <div id="clock" class="clock"></div>
+        </div>
+        <h1>AQI Forecast</h1>
+        
+        <form action="{{ url_for('forecast') }}" method="post">
+            <button type="submit" class="btn">Get Forecast</button>
+        </form>
+        
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('predict') }}" class="btn">Predict AQI</a></li>
+                <li><a href="{{ url_for('about') }}" class="btn">About Us</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const date = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('clock').innerHTML = `${date} <br> ${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // Initialize clock immediately
+    </script>
+</body>
+</html>

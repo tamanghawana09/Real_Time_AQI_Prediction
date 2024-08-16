@@ -1,0 +1,194 @@
+body {
+    background-image: url('{{ url_for('static', filename='images/background.jpg') }}');
+    background-size: cover; /* Adjusts the size of the background image */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    font-family: 'Arial', sans-serif;
+    background-attachment: fixed;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1, h2 {
+    color: #004d40;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin: 20px 0;
+}
+
+.clock-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.clock {
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+    color: #004d40;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border: 5px solid #004d40;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: all 0.5s ease;
+}
+
+.current-time {
+    text-align: center;
+    font-size: 1.2em;
+    color: #004d40;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 20px 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 15px 30px;
+    border: 2px solid #004d40;
+    border-radius: 5px;
+    background: #004d40;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+}
+
+nav ul li a.btn:hover {
+    background: #00251a;
+    color: #ffffff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.forecast-table th, .forecast-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.forecast-table th {
+    background-color: #004d40;
+    color: white;
+}
+
+.forecast-img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #004d40;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #004d40;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #00251a;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        font-size: 1em;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

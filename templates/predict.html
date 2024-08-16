@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict AQI</h1>
+        
+        <p class="current-time">Current Date and Time: {{ current_time }}</p>
+        
+        <form action="{{ url_for('predict') }}" method="post">
+            <label for="precipitation">Precipitation:</label>
+            <input type="number" name="precipitation" step="0.01" required>
+            
+            <label for="temperature">Temperature:</label>
+            <input type="number" name="temperature" step="0.01" required>
+            
+            <label for="relative_humidity">Relative Humidity:</label>
+            <input type="number" name="relative_humidity" step="0.01" required>
+            
+            <label for="pm25">PM 2.5:</label>
+            <input type="number" name="pm25" step="0.01" required>
+            
+            <label for="o3">O3:</label>
+            <input type="number" name="o3" step="0.01" required>
+            
+            <button type="submit" class="btn">Predict AQI</button>
+        </form>
+        
+        {% if regression_prediction is not none %}
+            <h2>Regression Prediction</h2>
+            <p>Predicted AQI: {{ regression_prediction }}</p>
+            
+            <h2>Classification Prediction</h2>
+            <p>Predicted AQI Category: {{ classification_prediction }}</p>
+            <p>Category Name: {{ category_name }}</p>
+            <p>Recommendation: {{ recommendation }}</p>
+        {% endif %}
+        
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>
